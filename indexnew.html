@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="AUTHOR" content="GE Yunfeng" />
+    <title>HK Hiking Quick Check</title>
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <!-- my style -->
+    <link rel="stylesheet" type="text/css" href="./mystyles.css" />
+</head>
+<body>
+    <div class="tab-container">
+        <div id="trailFilterTab" class="tab">Trail</div>
+        <div id="attractionFilterTab" class="tab">Attraction</div>
+        <div id="bbqSiteFilterTab" class="tab">BBQ Site</div>
+        <div id="campsiteFilterTab" class="tab">Campsite</div>
+        <div id="viewpointFilterTab" class="tab">Viewpoint</div>
+        <div id="moreInfoTab" class="tab">More Info</div>
+        <div id="clearSearchBtn" class="tab">Clear Search Result</div>
+    </div>
+        
+    <div id="trailFilterSidebar" class="sidebar">
+        <h1>Trail Filter</h1>
+        <div class="filter-item">
+            <label>Trail Name:</label>
+            <input type="text" id="routeName" placeholder="All" list="routeList">
+            <datalist id="routeList"></datalist>
+        </div>
+        <div class="filter-item">
+            <button id="generateRouteNameBtn" class="btn primary">Load Trail</button>
+        </div>
+        <div class="filter-item">
+            <label>Difficulty:</label>
+            <select id="difficultyList">
+                <option value="All">All</option>
+                <option value="Easy">Easy</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Demanding">Demanding</option>
+                <option value="Difficult">Difficult</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <label>Region:</label>
+            <input type="text" id="regionName" placeholder="All" list="regionList">
+            <datalist id="regionList"></datalist>
+        </div>
+        <div class="filter-item">
+            <label>Wild Pig Encounter Risk:</label>
+            <select id="wildlifeList">
+                <option value="All">All</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <button id="generateRouteBtn" class="btn primary">Load Trail</button>
+        </div>
+    </div>
+
+    <div id="attractionFilterSidebar" class="sidebar">
+        <h1>Attraction Filter</h1>
+        <div class="filter-item">
+            <label>Attraction Name:</label>
+            <input type="text" id="attractionName" placeholder="All" list="attractionList">
+            <datalist id="attractionList"></datalist>
+        </div>
+        <div class="filter-item">
+            <button id="generateAttractionNameBtn" class="btn primary">Load Attraction</button>
+        </div>
+        <div class="filter-item">
+            <label>Wild Pig Encounter Risk:</label>
+            <select id="attpigList">
+                <option value="All">All</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <button id="generateAttractionBtn" class="btn primary">Load Attraction</button>
+        </div>
+    </div>
+
+    <div id="bbqSiteFilterSidebar" class="sidebar">
+        <h1>BBQ Site Filter</h1>
+        <div class="filter-item">
+            <label>BBQ Site Name:</label>
+            <input type="text" id="bbqName" placeholder="All" list="bbqList">
+            <datalist id="bbqList"></datalist>
+        </div>
+        <div class="filter-item">
+            <button id="generatebbqNameBtn" class="btn primary">Load BBQ Site</button>
+        </div>
+        <div class="filter-item">
+            <label>Wild Pig Encounter Risk:</label>
+            <select id="bbqpigList">
+                <option value="All">All</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <button id="generatebbqBtn" class="btn primary">Load BBQ Site</button>
+        </div>
+    </div>
+
+    <div id="campsiteFilterSidebar" class="sidebar">
+        <h1>Campsite Filter</h1>
+        <div class="filter-item">
+            <label>Campsite Name:</label>
+            <input type="text" id="campName" placeholder="All" list="campList">
+            <datalist id="campList"></datalist>
+        </div>
+        <div class="filter-item">
+            <button id="generatecampNameBtn" class="btn primary">Load Campsite</button>
+        </div>
+        <div class="filter-item">
+            <label>Water Source:</label>
+            <select id="waterList">
+                <option value="All">All</option>
+                <option value="TAP">Tap</option>
+                <option value="FLUSHING TOILET">Toilet</option>
+                <option value="STREAM WATER (SEASONAL SUPPLY)">Seasonal Stream</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <label>Tent Space:</label>
+            <select id="tentList">
+                <option value="All">All</option>
+                <option value="Less than 20">Less than 20</option>
+                <option value="20-50">20-50</option>
+                <option value="More than 50">More than 50</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <label>Wild Pig Encounter Risk:</label>
+            <select id="campigList">
+                <option value="All">All</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <button id="generatecampBtn" class="btn primary">Load Campsite</button>
+        </div>
+    </div>
+
+    <div id="viewpointFilterSidebar" class="sidebar">
+        <h1>Viewpoint Filter</h1>
+        <div class="filter-item">
+            <label>Viewpoint Name:</label>
+            <input type="text" id="viewName" placeholder="All" list="viewList">
+            <datalist id="viewList"></datalist>
+        </div>
+        <div class="filter-item">
+            <button id="generateviewNameBtn" class="btn primary">Load Viewpoint</button>
+        </div>
+        <div class="filter-item">
+            <label>Wild Pig Encounter Risk:</label>
+            <select id="viepigList">
+                <option value="All">All</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <button id="generateViewBtn" class="btn primary">Load Viewpoint</button>
+        </div>
+    </div>
+
+    <div id="moreInfoSidebar" class="sidebar">
+        <h1>More Info</h1>
+        <div class="button-group">
+            <a href="https://www.afcd.gov.hk/tc_chi/conservation/con_fau/con_fau_nui/con_fau_nui_pig/con_fau_nui_pig.html" class="external-link" target="_blank">Wild Pig Encounter Proper Act</a>
+            <a href="https://www.hiking.gov.hk" class="external-link" target="_blank">More Hiking Details</a>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="./main.js"></script>
+    <script src="./traildisplay.js"></script>
+    <script src="./attractiondisplay.js"></script>
+    <script src="./bbqdisplay.js"></script>
+    <script src="./campdisplay.js"></script>
+    <script src="./viewdisplay.js"></script>
+    <script src="./clearresult.js"></script>
+    <script src="./textlist.js"></script>
+    <script src="./sidebartoggle.js"></script>
+</body>
+</html>
